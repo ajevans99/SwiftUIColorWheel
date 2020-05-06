@@ -29,6 +29,7 @@ struct ColorWheel: View {
                         .overlay(
                             Circle()
                                 .fill(self.radialGradient)
+                                .overlay(Circle().stroke(Color.black, lineWidth: 2).foregroundColor(.clear))
                     )
 
                     Circle()
@@ -60,6 +61,18 @@ struct ColorWheel: View {
 
         self.pointerLocation.x = offsetX
         self.pointerLocation.y = offsetY
+
+        updateColor(x: offsetX / radius, y: offsetY / radius, radius: radius)
+    }
+
+    /// Update the color using the x, y coordinate of the point where `(0, 0)` is the circle's center
+    /// and the values range from `[-1, 1]`
+    /// Math below solved with help of this answer on StackOverflow:
+    /// https://stackoverflow.com/a/52750006/8798838
+    func updateColor(x: CGFloat, y: CGFloat, radius: CGFloat) {
+        let saturation = sqrt(x * x + y * y)
+        let hue = (360+atan2(y, x).radianToDegrees()).truncatingRemainder(dividingBy: 360) / 360
+        selectedColor = Color(UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1))
     }
 }
 
