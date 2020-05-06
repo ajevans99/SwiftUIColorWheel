@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selectedColor: Color = .white
+
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            selectedColor
+            VStack {
+                ColorWheel(selectedColor: $selectedColor)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(8)
+            }
+
+//                .frame(width: 100, height: 100, alignment: .center)
+        }
     }
 }
 

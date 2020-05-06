@@ -13,6 +13,7 @@
 		9309C583246232FA00895160 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9309C582246232FA00895160 /* Assets.xcassets */; };
 		9309C586246232FA00895160 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9309C585246232FA00895160 /* Preview Assets.xcassets */; };
 		9309C589246232FA00895160 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9309C587246232FA00895160 /* LaunchScreen.storyboard */; };
+		9309C591246236C800895160 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309C590246236C800895160 /* ColorWheel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9309C585246232FA00895160 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9309C588246232FA00895160 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9309C58A246232FA00895160 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9309C590246236C800895160 /* ColorWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				9309C57C246232F800895160 /* AppDelegate.swift */,
 				9309C57E246232F800895160 /* SceneDelegate.swift */,
+				9309C590246236C800895160 /* ColorWheel.swift */,
 				9309C580246232F800895160 /* ContentView.swift */,
 				9309C582246232FA00895160 /* Assets.xcassets */,
 				9309C587246232FA00895160 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 				9309C57D246232F800895160 /* AppDelegate.swift in Sources */,
 				9309C57F246232F800895160 /* SceneDelegate.swift in Sources */,
 				9309C581246232F800895160 /* ContentView.swift in Sources */,
+				9309C591246236C800895160 /* ColorWheel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
