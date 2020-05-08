@@ -10,17 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selectedColor: Color = .white
+    @State var colors: [Color] = [.red, .green, .blue]
 
     var body: some View {
         ZStack {
             selectedColor
             VStack {
+                Text("Color Wheel")
                 ColorWheel(selectedColor: $selectedColor)
                     .aspectRatio(contentMode: .fit)
                     .padding(8)
+                Spacer()
+                ColorSwabs(colors: $colors)
             }
-
-//                .frame(width: 100, height: 100, alignment: .center)
         }
     }
 }

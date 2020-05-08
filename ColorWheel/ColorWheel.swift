@@ -12,9 +12,15 @@ struct ColorWheel: View {
 
     @Binding var selectedColor: Color
 
-    @State var pointerLocation: CGPoint = .zero
+    @State var tempSecondaryPointerColor: Color = .white
 
     @State var radius: CGFloat = .zero
+
+    @State var pointerLocation: CGPoint = .zero
+    @State var pointerRadius: CGFloat = .zero
+    @State var pointerAngle: Angle = .zero
+
+    @EnvironmentObject var pointers: Pointers
 
     init(selectedColor: Binding<Color>) {
         self._selectedColor = selectedColor
@@ -29,19 +35,27 @@ struct ColorWheel: View {
                         .overlay(
                             Circle()
                                 .fill(self.radialGradient)
-                                .overlay(Circle().stroke(Color.black, lineWidth: 2).foregroundColor(.clear))
+                                .overlay(Circle()
+                                    .stroke(Color.black, lineWidth: 2)
+                                    .foregroundColor(.clear))
                     )
 
+                    ForEach(0..<(self.pointers.colorCombination.count - 1)) { index in
+                        SecondaryPointerView(index: index)
+                    }
+
                     Circle()
-                        .foregroundColor(.white)
-                        .frame(width: 20, height: 20, alignment: .center)
+                        .stroke(Color.white, lineWidth: 6)
+                        .foregroundColor(.clear)
+                        .frame(width: 10, height: 10, alignment: .center)
                         .shadow(radius: 8)
-                        .offset(x: self.pointerLocation.x, y: self.pointerLocation.y)
+                        .offset(self.pointers.primaryPointer.offset)
                         .animation(Animation.interactiveSpring())
                         .gesture(DragGesture()
-                            .onChanged { value in
-                                self.setPointerPosition(usingDragValue: value, radius: geometry.size.height / 2)
-                            })
+                        .onChanged { value in
+                            self.setPointerPosition(usingDragValue: value)
+                        })
+
                 }
                 .onAppear {
                     self.radius = geometry.size.height / 2
@@ -50,26 +64,27 @@ struct ColorWheel: View {
         }
     }
 
-    func setPointerPosition(usingDragValue value: DragGesture.Value, radius: CGFloat) {
+    func setPointerPosition(usingDragValue value: DragGesture.Value) {
         let offsetX = value.startLocation.x + value.translation.width - 10
         let offsetY = value.startLocation.y + value.translation.height - 10
 
         // Make sure you are inside circle using pythagorean theorem
-        guard pow(abs(offsetX), 2) + pow(abs(offsetY), 2) <= pow(abs(radius), 2) else {
+        let pointerRadius = sqrt(offsetX * offsetX + offsetY * offsetY)
+        guard pointerRadius <= radius else {
             return
         }
+        pointers.primaryPointer.radius = pointerRadius
+        pointers.primaryPointer.angle.radians = Double(atan2(offsetY/radius, offsetX/radius))
+        pointers.objectWillChange.send()
 
-        self.pointerLocation.x = offsetX
-        self.pointerLocation.y = offsetY
-
-        updateColor(x: offsetX / radius, y: offsetY / radius, radius: radius)
+        updateColor(x: offsetX / radius, y: offsetY / radius)
     }
 
     /// Update the color using the x, y coordinate of the point where `(0, 0)` is the circle's center
     /// and the values range from `[-1, 1]`
     /// Math below solved with help of this answer on StackOverflow:
     /// https://stackoverflow.com/a/52750006/8798838
-    func updateColor(x: CGFloat, y: CGFloat, radius: CGFloat) {
+    func updateColor(x: CGFloat, y: CGFloat) {
         let saturation = sqrt(x * x + y * y)
         let hue = (360+atan2(y, x).radianToDegrees()).truncatingRemainder(dividingBy: 360) / 360
         selectedColor = Color(UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1))
@@ -110,3 +125,5 @@ private extension ColorWheel {
         RadialGradient(gradient: Gradient(colors: saturation), center: .center, startRadius: 0, endRadius: radius)
     }
 }
+
+// Mark:
