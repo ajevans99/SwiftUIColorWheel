@@ -11,15 +11,20 @@ import SwiftUI
 struct ColorSwabs: View {
     @EnvironmentObject var pointers: Pointers
 
+    var transition: AnyTransition {
+        if pointers.primaryPointer.isDragging {
+            return .identity
+        }
+        return .asymmetric(insertion: .move(edge: .trailing),
+                           removal: .opacity)
+    }
+
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
             ForEach(pointers.colors, id: \.self) { color in
-                Rectangle()
-                    .foregroundColor(color)
-                    .frame(width: 100, height: 100, alignment: .center)
-                    .fixedSize()
-                    .transition(AnyTransition.scale)
-            }.animation(Animation.easeIn)
+                ColorSwab(color: color)
+                    .transition(self.transition)
+            }.animation(.easeInOut(duration: 1))
         }.padding(20)
     }
 }

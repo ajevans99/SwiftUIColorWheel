@@ -45,18 +45,20 @@ enum ColorCombinations: String, CaseIterable {
     }
 }
 
-func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat) -> Color {
+func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat) -> UIColor {
+    guard radius != .zero else { return .white }
+
     let saturation = radius / circleRadius
     let hue = CGFloat((360 + angle.degrees)
         .truncatingRemainder(dividingBy: 360) / 360)
-    return Color(UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1))
+    return UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
 }
 
 class Pointers: ObservableObject {
     @Published var primaryPointer = Location()
     @Published var secondaryPointers = [RelativeLocation]()
 
-    var colorCombination: ColorCombinations = .triadic {
+    var colorCombination: ColorCombinations = .single {
         didSet {
             updateSecondaryPointers()
         }
@@ -64,7 +66,7 @@ class Pointers: ObservableObject {
 
     var circleRadius: CGFloat = .zero
 
-    var colors: [Color] {
+    var colors: [UIColor] {
         var colors = [polarToColor(radius: primaryPointer.radius,
                                    angle: primaryPointer.angle,
                                    circleRadius: circleRadius)]
@@ -102,6 +104,8 @@ class Pointers: ObservableObject {
 class Location: ObservableObject, Identifiable {
     @Published var angle: Angle
     @Published var radius: CGFloat
+
+    var isDragging = false
 
     var offset: CGSize {
         CGSize(width: radius * CGFloat(cos(angle.radians)),
