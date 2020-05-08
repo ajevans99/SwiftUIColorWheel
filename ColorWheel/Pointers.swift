@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-enum ColorCombinations {
+enum ColorCombinations: String, CaseIterable {
     case single
     case complementary
     case analogous
@@ -45,6 +45,13 @@ enum ColorCombinations {
     }
 }
 
+func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat) -> Color {
+    let saturation = radius / circleRadius
+    let hue = CGFloat((360 + angle.degrees)
+        .truncatingRemainder(dividingBy: 360) / 360)
+    return Color(UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1))
+}
+
 class Pointers: ObservableObject {
     @Published var primaryPointer = Location()
     @Published var secondaryPointers = [RelativeLocation]()
@@ -53,6 +60,20 @@ class Pointers: ObservableObject {
         didSet {
             updateSecondaryPointers()
         }
+    }
+
+    var circleRadius: CGFloat = .zero
+
+    var colors: [Color] {
+        var colors = [polarToColor(radius: primaryPointer.radius,
+                                   angle: primaryPointer.angle,
+                                   circleRadius: circleRadius)]
+        colors += secondaryPointers.map { location in
+            polarToColor(radius: primaryPointer.radius,
+                         angle: location.angle,
+                         circleRadius: circleRadius)
+        }
+        return colors
     }
 
     init() {
@@ -78,7 +99,7 @@ class Pointers: ObservableObject {
     }
 }
 
-class Location: ObservableObject {
+class Location: ObservableObject, Identifiable {
     @Published var angle: Angle
     @Published var radius: CGFloat
 

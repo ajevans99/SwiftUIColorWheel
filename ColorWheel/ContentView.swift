@@ -11,17 +11,23 @@ import SwiftUI
 struct ContentView: View {
     @State var selectedColor: Color = .white
     @State var colors: [Color] = [.red, .green, .blue]
+    @EnvironmentObject var pointers: Pointers
 
     var body: some View {
         ZStack {
-            selectedColor
-            VStack {
+            VStack(alignment: .center) {
                 Text("Color Wheel")
+                    .font(.title)
                 ColorWheel(selectedColor: $selectedColor)
                     .aspectRatio(contentMode: .fit)
                     .padding(8)
-                Spacer()
-                ColorSwabs(colors: $colors)
+                Picker(selection: $pointers.colorCombination,
+                       label: Text("Combination")) {
+                        ForEach(ColorCombinations.allCases, id: \.self) { combo in
+                            Text(combo.rawValue)
+                        }
+                }.labelsHidden()
+                ColorSwabs()
             }
         }
     }

@@ -9,17 +9,17 @@
 import SwiftUI
 
 struct ColorSwabs: View {
-    @Binding var colors: [Color]
-
-    init(colors: Binding<[Color]>) {
-        self._colors = colors
-    }
+    @EnvironmentObject var pointers: Pointers
 
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
-            ForEach(colors, id: \.self) { color in
-                Rectangle().foregroundColor(color)
-            }
-        }
+            ForEach(pointers.colors, id: \.self) { color in
+                Rectangle()
+                    .foregroundColor(color)
+                    .frame(width: 100, height: 100, alignment: .center)
+                    .fixedSize()
+                    .transition(AnyTransition.scale)
+            }.animation(Animation.easeIn)
+        }.padding(20)
     }
 }

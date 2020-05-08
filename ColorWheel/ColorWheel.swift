@@ -40,7 +40,7 @@ struct ColorWheel: View {
                                     .foregroundColor(.clear))
                     )
 
-                    ForEach(0..<(self.pointers.colorCombination.count - 1)) { index in
+                    ForEach(0..<(self.pointers.colorCombination.count - 1), id: \.self) { index in
                         SecondaryPointerView(index: index)
                     }
 
@@ -59,6 +59,7 @@ struct ColorWheel: View {
                 }
                 .onAppear {
                     self.radius = geometry.size.height / 2
+                    self.pointers.circleRadius = geometry.size.height / 2
                 }
             }
         }

@@ -23,7 +23,7 @@ struct SecondaryPointerView: View {
             .foregroundColor(.clear)
             .frame(width: 10, height: 10, alignment: .center)
             .shadow(radius: 8)
-            .offset(pointers.secondaryPointers[index].offset)
+            .offset(pointers.secondaryPointers.indices.contains(index) ? pointers.secondaryPointers[index].offset : .zero)
             .animation(Animation.interactiveSpring())
     }
 }
