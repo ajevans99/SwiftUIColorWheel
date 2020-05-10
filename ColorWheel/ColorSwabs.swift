@@ -10,9 +10,10 @@ import SwiftUI
 
 struct ColorSwabs: View {
     @EnvironmentObject var pointers: Pointers
+    @State var lastColorsCount = 1
 
     var transition: AnyTransition {
-        if pointers.primaryPointer.isDragging {
+        if pointers.primaryPointer.isDragging || pointers.colors.count == lastColorsCount {
             return .identity
         }
         return .asymmetric(insertion: .move(edge: .trailing),
@@ -25,6 +26,10 @@ struct ColorSwabs: View {
                 ColorSwab(color: color)
                     .transition(self.transition)
             }.animation(.easeInOut(duration: 1))
-        }.padding(20)
+        }
+        .padding(20)
+        .onReceive(pointers.objectWillChange) { colors in
+            self.lastColorsCount = self.pointers.colors.count
+        }
     }
 }

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ColorSwab: View {
+    @EnvironmentObject var pointers: Pointers
 
     let color: UIColor
 
@@ -33,6 +34,7 @@ struct ColorSwab: View {
             .shadow(radius: 8)
             .onTapGesture {
                 self.selected = !self.selected
+                self.pointers.selectedColor = self.color
         }
     }
 

@@ -12,9 +12,11 @@ import Combine
 enum ColorCombinations: String, CaseIterable {
     case single
     case complementary
+    case splitComplementary = "split complementary"
     case analogous
     case triadic
     case tetradic
+    case square
 
     var count: Int {
         switch self {
@@ -22,9 +24,9 @@ enum ColorCombinations: String, CaseIterable {
             return 1
         case .complementary:
             return 2
-        case .analogous, .triadic:
+        case .splitComplementary, .analogous, .triadic:
             return 3
-        case .tetradic:
+        case .tetradic, .square:
             return 4
         }
     }
@@ -35,11 +37,15 @@ enum ColorCombinations: String, CaseIterable {
             return Angle(radians: 0)
         case .complementary:
             return Angle(radians: .pi)
+        case .splitComplementary:
+            return Angle(radians: 4 * .pi / 5)
         case .analogous:
             return Angle(radians: .pi / 6)
         case .triadic:
             return Angle(radians: 2 * .pi / 3)
         case .tetradic:
+            return Angle(radians: .pi / 3)
+        case .square:
             return Angle(radians: .pi / 2)
         }
     }
@@ -57,6 +63,8 @@ func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat) -> UICol
 class Pointers: ObservableObject {
     @Published var primaryPointer = Location()
     @Published var secondaryPointers = [RelativeLocation]()
+
+    @Published var selectedColor: UIColor?
 
     var colorCombination: ColorCombinations = .single {
         didSet {
@@ -86,11 +94,23 @@ class Pointers: ObservableObject {
         switch colorCombination {
         case .single:
             secondaryPointers = [RelativeLocation]()
-        case .analogous:
-            secondaryPointers = [RelativeLocation(referenceLocation: primaryPointer,
-                                                  relativeAngle: colorCombination.angle),
-                                 RelativeLocation(referenceLocation: primaryPointer,
-                                                  relativeAngle: -colorCombination.angle)]
+        case .splitComplementary, .analogous:
+            secondaryPointers = [
+                RelativeLocation(referenceLocation: primaryPointer,
+                                 relativeAngle: colorCombination.angle),
+
+                RelativeLocation(referenceLocation: primaryPointer,
+                                 relativeAngle: -colorCombination.angle)
+            ]
+        case .tetradic:
+            secondaryPointers = [
+                RelativeLocation(referenceLocation: primaryPointer,
+                                 relativeAngle: colorCombination.angle),
+                RelativeLocation(referenceLocation: primaryPointer,
+                                 relativeAngle: colorCombination.angle * 3),
+                RelativeLocation(referenceLocation: primaryPointer,
+                                 relativeAngle: -(colorCombination.angle * 2)),
+            ]
         default:
             let count = colorCombination.count
             secondaryPointers = (1..<count).map { number in
@@ -104,6 +124,8 @@ class Pointers: ObservableObject {
 class Location: ObservableObject, Identifiable {
     @Published var angle: Angle
     @Published var radius: CGFloat
+
+    @Published var brightnessAngle = Angle(degrees: 1)
 
     var isDragging = false
 

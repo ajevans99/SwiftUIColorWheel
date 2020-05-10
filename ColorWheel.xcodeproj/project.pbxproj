@@ -17,6 +17,7 @@
 		931C64792464885800F598F3 /* SecondaryPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C64782464885800F598F3 /* SecondaryPointer.swift */; };
 		931C647B2464989900F598F3 /* ColorSwabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C647A2464989900F598F3 /* ColorSwabs.swift */; };
 		931C647D24649A5800F598F3 /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C647C24649A5800F598F3 /* Pointers.swift */; };
+		939513A624679D3C00AD0E2A /* ColorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A524679D3C00AD0E2A /* ColorDetail.swift */; };
 		93AC12FD246279C200B05B6C /* CGFloat+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */; };
 		93ED98BF246517DC006AA339 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED98BE246517DC006AA339 /* UIColor+RGB.swift */; };
 		93ED98C32465DB44006AA339 /* ColorSwab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED98C22465DB44006AA339 /* ColorSwab.swift */; };
@@ -35,6 +36,7 @@
 		931C64782464885800F598F3 /* SecondaryPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryPointer.swift; sourceTree = "<group>"; };
 		931C647A2464989900F598F3 /* ColorSwabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwabs.swift; sourceTree = "<group>"; };
 		931C647C24649A5800F598F3 /* Pointers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointers.swift; sourceTree = "<group>"; };
+		939513A524679D3C00AD0E2A /* ColorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetail.swift; sourceTree = "<group>"; };
 		93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Radians.swift"; sourceTree = "<group>"; };
 		93ED98BE246517DC006AA339 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		93ED98C22465DB44006AA339 /* ColorSwab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwab.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				9309C590246236C800895160 /* ColorWheel.swift */,
 				931C64782464885800F598F3 /* SecondaryPointer.swift */,
 				9309C580246232F800895160 /* ContentView.swift */,
+				939513A524679D3C00AD0E2A /* ColorDetail.swift */,
 				931C647A2464989900F598F3 /* ColorSwabs.swift */,
 				93ED98C22465DB44006AA339 /* ColorSwab.swift */,
 				931C647C24649A5800F598F3 /* Pointers.swift */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9309C57D246232F800895160 /* AppDelegate.swift in Sources */,
+				939513A624679D3C00AD0E2A /* ColorDetail.swift in Sources */,
 				931C647B2464989900F598F3 /* ColorSwabs.swift in Sources */,
 				9309C57F246232F800895160 /* SceneDelegate.swift in Sources */,
 				931C647D24649A5800F598F3 /* Pointers.swift in Sources */,

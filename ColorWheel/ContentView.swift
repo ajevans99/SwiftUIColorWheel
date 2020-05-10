@@ -13,11 +13,12 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color(.init(red: 0.9, green: 0.9, blue: 0.9, alpha: 1))
+            Color.white
             VStack(alignment: .center) {
                 Text("Color Wheel")
                     .font(.title)
-                    .padding(.top, 32)
+                    .fontWeight(.bold)
+                    .padding(.top, 64)
                 ColorWheel()
                     .aspectRatio(contentMode: .fit)
                     .padding(8)
@@ -30,6 +31,11 @@ struct ContentView: View {
                 }
                 .labelsHidden()
                 ColorSwabs()
+            }
+            if pointers.selectedColor != nil {
+                withAnimation {
+                    ColorDetail()
+                }
             }
         }.edgesIgnoringSafeArea(.all)
     }

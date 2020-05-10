@@ -17,13 +17,10 @@ struct ColorWheel: View {
             ZStack {
                 Circle()
                     .fill(self.angularGradient)
-                    .overlay(
-                        Circle()
-                            .fill(self.radialGradient)
-                            .overlay(Circle()
-                                .stroke(Color.black, lineWidth: 2)
-                                .foregroundColor(.clear))
-                )
+                    .shadow(radius: 8)
+                    .frame(width: self.radius * 2, height: self.radius * 2, alignment: .center)
+                    .overlay(Circle().fill(self.radialGradient)
+                        .overlay(Circle().scale(1.1).stroke(self.brightnessGradient, lineWidth: 12)))
 
                 ForEach(0..<(self.pointers.colorCombination.count - 1), id: \.self) { index in
                     SecondaryPointerView(index: index)
@@ -32,7 +29,7 @@ struct ColorWheel: View {
                 Circle()
                     .stroke(Color.white, lineWidth: 6)
                     .foregroundColor(.clear)
-                    .frame(width: 10, height: 10, alignment: .center)
+                    .frame(width: 16, height: 16, alignment: .center)
                     .shadow(radius: 8)
                     .offset(self.pointers.primaryPointer.offset)
                     .animation(Animation.interactiveSpring())
@@ -47,15 +44,15 @@ struct ColorWheel: View {
 
             }
             .onAppear {
-                self.radius = geometry.size.height / 2
-                self.pointers.circleRadius = geometry.size.height / 2
+                self.radius = (geometry.size.height / 2) - 32
+                self.pointers.circleRadius = self.radius
             }
         }
     }
 
     func setPointerPosition(usingDragValue value: DragGesture.Value) {
-        let offsetX = value.startLocation.x + value.translation.width - 5
-        let offsetY = value.startLocation.y + value.translation.height - 5
+        let offsetX = value.startLocation.x + value.translation.width - 8
+        let offsetY = value.startLocation.y + value.translation.height - 8
 
         // Make sure you are inside circle using pythagorean theorem
         let pointerRadius = sqrt(offsetX * offsetX + offsetY * offsetY)
@@ -81,12 +78,22 @@ private extension ColorWheel {
     }
 
     var saturation: [Color] {
-        let saturationValues = stride(from: 0, through: 1, by: 0.0001)
+        let saturationValues = stride(from: 0, through: 1, by: 0.1)
         return saturationValues.map {
             Color(UIColor(hue: 0,
                           saturation: CGFloat($0),
                           brightness: 1,
                           alpha: CGFloat(1-$0)))
+        }
+    }
+
+    var brightness: [Color] {
+        return (0...1).map {
+            Color(UIColor(hue: CGFloat((360 + pointers.primaryPointer.angle.degrees)
+                                .truncatingRemainder(dividingBy: 360) / 360),
+                          saturation: pointers.primaryPointer.radius / radius,
+                          brightness: CGFloat($0),
+                          alpha: 1))
         }
     }
 
@@ -103,5 +110,9 @@ private extension ColorWheel {
                        center: .center,
                        startRadius: 0,
                        endRadius: radius)
+    }
+
+    var brightnessGradient: AngularGradient {
+        AngularGradient(gradient: Gradient(colors: brightness), center: .center)
     }
 }
