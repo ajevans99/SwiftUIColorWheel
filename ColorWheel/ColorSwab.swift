@@ -13,8 +13,6 @@ struct ColorSwab: View {
 
     let color: UIColor
 
-    @State var selected: Bool = false
-
     init(color: UIColor) {
         self.color = color
     }
@@ -33,7 +31,6 @@ struct ColorSwab: View {
             )
             .shadow(radius: 8)
             .onTapGesture {
-                self.selected = !self.selected
                 self.pointers.selectedColor = self.color
         }
     }
@@ -43,8 +40,10 @@ struct ColorSwab: View {
         let red = String(format: "%02X", components.red)
         let green = String(format: "%02X", components.green)
         let blue = String(format: "%02X", components.blue)
+        let brightness = color.hsba.brightness
         return Text("#\(red)\(green)\(blue)")
             .font(.system(.caption, design: .monospaced))
+            .foregroundColor(brightness < 50 ? .white : .black)
             .padding(.bottom, 4)
     }
 }

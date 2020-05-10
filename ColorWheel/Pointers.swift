@@ -51,13 +51,13 @@ enum ColorCombinations: String, CaseIterable {
     }
 }
 
-func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat) -> UIColor {
-    guard radius != .zero else { return .white }
-
-    let saturation = radius / circleRadius
+func polarToColor(radius: CGFloat, angle: Angle, circleRadius: CGFloat, brightnessAngle: Angle) -> UIColor {
+    let saturation = circleRadius == 0 ? 0 : radius / circleRadius
     let hue = CGFloat((360 + angle.degrees)
         .truncatingRemainder(dividingBy: 360) / 360)
-    return UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
+    let brightness = CGFloat((361 + brightnessAngle.degrees)
+        .truncatingRemainder(dividingBy: 360) / 360)
+    return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
 }
 
 class Pointers: ObservableObject {
@@ -72,16 +72,18 @@ class Pointers: ObservableObject {
         }
     }
 
-    var circleRadius: CGFloat = .zero
+    var circleRadius: CGFloat = 0
 
     var colors: [UIColor] {
         var colors = [polarToColor(radius: primaryPointer.radius,
                                    angle: primaryPointer.angle,
-                                   circleRadius: circleRadius)]
+                                   circleRadius: circleRadius,
+                                   brightnessAngle: primaryPointer.brightnessAngle)]
         colors += secondaryPointers.map { location in
             polarToColor(radius: primaryPointer.radius,
                          angle: location.angle,
-                         circleRadius: circleRadius)
+                         circleRadius: circleRadius,
+                         brightnessAngle: primaryPointer.brightnessAngle)
         }
         return colors
     }
@@ -125,7 +127,7 @@ class Location: ObservableObject, Identifiable {
     @Published var angle: Angle
     @Published var radius: CGFloat
 
-    @Published var brightnessAngle = Angle(degrees: 1)
+    @Published var brightnessAngle = Angle(radians: -(.pi / 2))
 
     var isDragging = false
 
@@ -134,9 +136,14 @@ class Location: ObservableObject, Identifiable {
                height: radius * CGFloat(sin(angle.radians)))
     }
 
+    func brightnessOffset(circleRadius: CGFloat) -> CGSize {
+        CGSize(width: circleRadius * CGFloat(cos(brightnessAngle.radians)),
+               height: circleRadius * CGFloat(sin(brightnessAngle.radians)))
+    }
+
     init() {
-        angle = .zero
-        radius = .zero
+        angle = Angle(degrees: 0)
+        radius = 0
     }
 }
 

@@ -16,7 +16,7 @@ struct ContentView: View {
             Color.white
             VStack(alignment: .center) {
                 Text("Color Wheel")
-                    .font(.title)
+                    .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 64)
                 ColorWheel()

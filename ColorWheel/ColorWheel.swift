@@ -15,17 +15,32 @@ struct ColorWheel: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                // Main color wheel
                 Circle()
                     .fill(self.angularGradient)
                     .shadow(radius: 8)
                     .frame(width: self.radius * 2, height: self.radius * 2, alignment: .center)
                     .overlay(Circle().fill(self.radialGradient)
-                        .overlay(Circle().scale(1.1).stroke(self.brightnessGradient, lineWidth: 12)))
+                        .overlay(Circle().scale(1.1).stroke(self.brightnessGradient, lineWidth: 12).shadow(radius: 8)))
 
+                // Brightness pointer
+                Circle()
+                    .stroke(Color.white, lineWidth: 6)
+                    .frame(width: 16, height: 16, alignment: .center)
+                    .shadow(radius: 8)
+                    .offset(self.pointers.primaryPointer.brightnessOffset(circleRadius: self.radius * 1.1))
+                    .animation(Animation.interactiveSpring())
+                    .gesture(DragGesture()
+                        .onChanged { value in
+                            self.setBrightnessPointer(usingDragValue: value)
+                        })
+
+                // Secondary pointers
                 ForEach(0..<(self.pointers.colorCombination.count - 1), id: \.self) { index in
                     SecondaryPointerView(index: index)
                 }
 
+                // Primary pointer
                 Circle()
                     .stroke(Color.white, lineWidth: 6)
                     .foregroundColor(.clear)
@@ -50,22 +65,29 @@ struct ColorWheel: View {
         }
     }
 
+    func setBrightnessPointer(usingDragValue value: DragGesture.Value) {
+        let offsetX = value.startLocation.x + value.translation.width - 8
+        let offsetY = value.startLocation.y + value.translation.height - 8
+        pointers.primaryPointer.brightnessAngle.radians = Double(atan2(offsetY/radius, offsetX/radius))
+        pointers.objectWillChange.send()
+    }
+
     func setPointerPosition(usingDragValue value: DragGesture.Value) {
         let offsetX = value.startLocation.x + value.translation.width - 8
         let offsetY = value.startLocation.y + value.translation.height - 8
 
         // Make sure you are inside circle using pythagorean theorem
         let pointerRadius = sqrt(offsetX * offsetX + offsetY * offsetY)
-        guard pointerRadius <= radius else {
-            return
+        if pointerRadius <= radius {
+            pointers.primaryPointer.radius = pointerRadius
         }
-        pointers.primaryPointer.radius = pointerRadius
         pointers.primaryPointer.angle.radians = Double(atan2(offsetY/radius, offsetX/radius))
         pointers.objectWillChange.send()
     }
 }
 
-// MARK: - Colors
+// MARK: - Colors and Gradients
+
 private extension ColorWheel {
     var hues: [Color] {
         let hueValues = Array(0...359)

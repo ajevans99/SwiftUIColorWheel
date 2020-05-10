@@ -36,12 +36,12 @@ extension UIColor {
         return (Int(cyan * 100), Int(magenta * 100), Int(yellow * 100), Int(black * 100))
     }
 
-    var hsba: (hue: Double, saturation: Double, brightness: Int, alpha: Double) {
+    var hsba: (hue: Double, saturation: Double, brightness: Double, alpha: Double) {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
         getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        return (Double(hue * 360), Double(saturation * 100), Int(brightness * 100), Double(alpha))
+        return (Double(hue * 360), Double(saturation * 100), Double(brightness * 100), Double(alpha))
     }
 }

@@ -20,6 +20,7 @@ struct ColorDetail: View {
     var body: some View {
         ZStack {
             Color.black.opacity(0.5)
+                .onTapGesture(perform: self.dismiss)
             NavigationView {
                 VStack(alignment: .center, spacing: 48) {
                     ColorSwab(color: color)
@@ -31,22 +32,15 @@ struct ColorDetail: View {
                         hsvText
                         Divider()
                         cmykText
-                    }.scaledToFit()
-//                    Divider()
-//                    Text("Similar Colors")
-//                    HStack {
-//                        ColorSwab(color: self.color)
-//                        ColorSwab(color: self.color)
-//                        ColorSwab(color: self.color)
-//                    }
+                    }
+                    .fixedSize()
+                    .scaledToFit()
                 }
                 .padding(.all, 32)
                 .navigationBarTitle("Details", displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: {
-                    self.pointers.selectedColor = nil
-                }, label: {
+                .navigationBarItems(trailing: Button(action: self.dismiss) {
                     Text("Done")
-                }))
+                })
             }
             .scaledToFit()
             .cornerRadius(8)
@@ -54,7 +48,7 @@ struct ColorDetail: View {
         }
         .opacity(self.opacity)
         .onAppear {
-            withAnimation(.easeIn, { self.opacity = 1.0 })
+            withAnimation(.easeInOut, { self.opacity = 1.0 })
         }
     }
 
@@ -84,9 +78,13 @@ struct ColorDetail: View {
                 .font(.system(.body, design: .monospaced))
             Text("S: \(String(format: "%.1f", hsba.saturation))")
                 .font(.system(.body, design: .monospaced))
-            Text("B: \(hsba.brightness)")
+            Text("B: \(String(format: "%.1f", hsba.brightness))")
                 .font(.system(.body, design: .monospaced))
         }
+    }
+
+    func dismiss() {
+        pointers.selectedColor = nil
     }
 }
 
