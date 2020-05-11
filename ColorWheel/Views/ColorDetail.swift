@@ -16,6 +16,7 @@ struct ColorDetail: View {
     }
 
     @State var opacity = 0.0
+    @State var showShareSheet = false
 
     var body: some View {
         ZStack {
@@ -38,7 +39,9 @@ struct ColorDetail: View {
                 }
                 .padding(.all, 32)
                 .navigationBarTitle("Details", displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: self.dismiss) {
+                .navigationBarItems(leading: Button(action: self.share) {
+                    Image(systemName: "square.and.arrow.up")
+                }, trailing: Button(action: self.dismiss) {
                     Text("Done")
                 })
             }
@@ -49,6 +52,10 @@ struct ColorDetail: View {
         .opacity(self.opacity)
         .onAppear {
             withAnimation(.easeInOut, { self.opacity = 1.0 })
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ActivityView(activityItems: [ColorActivityItemSource(color: self.color)],
+                         applicationActivities: nil)
         }
     }
 
@@ -85,6 +92,10 @@ struct ColorDetail: View {
 
     func dismiss() {
         pointers.selectedColor = nil
+    }
+
+    func share() {
+        showShareSheet = true
     }
 }
 

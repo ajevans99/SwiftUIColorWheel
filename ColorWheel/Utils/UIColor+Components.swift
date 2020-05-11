@@ -1,5 +1,5 @@
 //
-//  UIColor+RGB.swift
+//  UIColor+Components.swift
 //  ColorWheel
 //
 //  Created by Austin Evans on 5/8/20.
@@ -43,5 +43,13 @@ extension UIColor {
         var alpha: CGFloat = 0
         getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         return (Double(hue * 360), Double(saturation * 100), Double(brightness * 100), Double(alpha))
+    }
+
+    var hex: String {
+        let components = rgba
+        let red = String(format: "%02X", components.red)
+        let green = String(format: "%02X", components.green)
+        let blue = String(format: "%02X", components.blue)
+        return "\(red)\(green)\(blue)"
     }
 }

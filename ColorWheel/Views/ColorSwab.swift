@@ -32,16 +32,12 @@ struct ColorSwab: View {
             .shadow(radius: 8)
             .onTapGesture {
                 self.pointers.selectedColor = self.color
-        }
+            }
     }
 
     var colorText: some View {
-        let components = color.rgba
-        let red = String(format: "%02X", components.red)
-        let green = String(format: "%02X", components.green)
-        let blue = String(format: "%02X", components.blue)
         let brightness = color.hsba.brightness
-        return Text("#\(red)\(green)\(blue)")
+        return Text("#\(color.hex)")
             .font(.system(.caption, design: .monospaced))
             .foregroundColor(brightness < 50 ? .white : .black)
             .padding(.bottom, 4)
