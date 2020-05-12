@@ -32,11 +32,6 @@ struct ContentView: View {
                 .clipped()
                 ColorSwabs()
             }
-            if pointers.selectedColor != nil {
-                withAnimation {
-                    ColorDetail()
-                }
-            }
         }.edgesIgnoringSafeArea(.all)
     }
 }

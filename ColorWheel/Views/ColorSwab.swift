@@ -30,9 +30,6 @@ struct ColorSwab: View {
                 }
             )
             .shadow(radius: 8)
-            .onTapGesture {
-                self.pointers.selectedColor = self.color
-            }
     }
 
     var colorText: some View {

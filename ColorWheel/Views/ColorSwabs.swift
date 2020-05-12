@@ -11,6 +11,7 @@ import SwiftUI
 struct ColorSwabs: View {
     @EnvironmentObject var pointers: Pointers
     @State var lastColorsCount = 1
+    @State var showDetail = false
 
     var transition: AnyTransition {
         if pointers.primaryPointer.isDragging || pointers.colors.count == lastColorsCount {
@@ -25,11 +26,20 @@ struct ColorSwabs: View {
             ForEach(pointers.colors, id: \.self) { color in
                 ColorSwab(color: color)
                     .transition(self.transition)
+                    .onTapGesture {
+                        self.pointers.selectedColor = color
+                        self.showDetail = true
+                    }
             }.animation(.easeInOut(duration: 1))
         }
         .padding(20)
         .onReceive(pointers.objectWillChange) { colors in
             self.lastColorsCount = self.pointers.colors.count
         }
+        .sheet(isPresented: $showDetail, onDismiss: {
+            self.pointers.selectedColor = nil
+        }, content: {
+            ColorDetail(color: self.pointers.selectedColor ?? .white, isPresenting: self.$showDetail)
+        })
     }
 }

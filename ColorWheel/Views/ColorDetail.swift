@@ -9,21 +9,14 @@
 import SwiftUI
 
 struct ColorDetail: View {
-    @EnvironmentObject var pointers: Pointers
+    let color: UIColor
 
-    var color: UIColor {
-        self.pointers.selectedColor ?? .white
-    }
-
-    @State var opacity = 0.0
+    @Binding var isPresenting: Bool
     @State var showShareSheet = false
 
     var body: some View {
-        ZStack {
-            Color.black.opacity(0.5)
-                .onTapGesture(perform: self.dismiss)
-            NavigationView {
-                ScrollView {
+        NavigationView {
+            ScrollView {
                 VStack(alignment: .center, spacing: 16) {
                     ColorSwab(color: color)
                         .scaleEffect(1.5)
@@ -47,18 +40,10 @@ struct ColorDetail: View {
                 }, trailing: Button(action: self.dismiss) {
                     Text("Done")
                 })
-                }
             }
-            .cornerRadius(8)
-            .padding(.horizontal, 16)
-            .padding(.vertical, 64)
-        }
-        .opacity(self.opacity)
-        .onAppear {
-            withAnimation(.easeInOut, { self.opacity = 1.0 })
         }
         .sheet(isPresented: $showShareSheet) {
-            ActivityView(activityItems: [ColorActivityItemSource(color: self.color)],
+            ActivityView(activityItems: [ColorActivityItemSource(color: self.color), UIImage(color: self.color) as Any],
                          applicationActivities: nil)
         }
     }
@@ -114,16 +99,10 @@ struct ColorDetail: View {
     }
 
     func dismiss() {
-        pointers.selectedColor = nil
+        isPresenting = false
     }
 
     func share() {
         showShareSheet = true
-    }
-}
-
-struct ColorDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorDetail()
     }
 }

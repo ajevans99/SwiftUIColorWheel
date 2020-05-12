@@ -22,7 +22,7 @@ class ColorActivityItemSource: NSObject, UIActivityItemSource {
     }
 
     func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return self.color.hex
+        return "Color Sample (#\(color.hex))"
     }
 
     func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
