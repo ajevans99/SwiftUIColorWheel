@@ -1,5 +1,5 @@
 //
-//  ColorActivity.swift
+//  ColorActivityItemSource.swift
 //  ColorWheel
 //
 //  Created by Austin Evans on 5/11/20.

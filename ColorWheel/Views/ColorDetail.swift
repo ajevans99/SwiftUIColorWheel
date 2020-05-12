@@ -23,7 +23,8 @@ struct ColorDetail: View {
             Color.black.opacity(0.5)
                 .onTapGesture(perform: self.dismiss)
             NavigationView {
-                VStack(alignment: .center, spacing: 48) {
+                ScrollView {
+                VStack(alignment: .center, spacing: 16) {
                     ColorSwab(color: color)
                         .scaleEffect(1.5)
                         .padding(.all, 16)
@@ -36,7 +37,9 @@ struct ColorDetail: View {
                     }
                     .fixedSize()
                     .scaledToFit()
+                    additionalDetails
                 }
+                .font(.system(.body, design: .monospaced))
                 .padding(.all, 32)
                 .navigationBarTitle("Details", displayMode: .inline)
                 .navigationBarItems(leading: Button(action: self.share) {
@@ -44,10 +47,11 @@ struct ColorDetail: View {
                 }, trailing: Button(action: self.dismiss) {
                     Text("Done")
                 })
+                }
             }
-            .scaledToFit()
             .cornerRadius(8)
             .padding(.horizontal, 16)
+            .padding(.vertical, 64)
         }
         .opacity(self.opacity)
         .onAppear {
@@ -62,19 +66,19 @@ struct ColorDetail: View {
     var rgbText: some View {
         let rgb = color.rgba
         return VStack(alignment: .leading, spacing: 4) {
-            Text("R: \(rgb.red)").font(.system(.body, design: .monospaced))
-            Text("G: \(rgb.green)").font(.system(.body, design: .monospaced))
-            Text("B: \(rgb.blue)").font(.system(.body, design: .monospaced))
+            Text("R: \(rgb.red)")
+            Text("G: \(rgb.green)")
+            Text("B: \(rgb.blue)")
         }
     }
 
     var cmykText: some View {
         let cmyk = color.cymk
         return VStack(alignment: .leading, spacing: 4) {
-            Text("C: \(cmyk.cyan)").font(.system(.body, design: .monospaced))
-            Text("Y: \(cmyk.yellow)").font(.system(.body, design: .monospaced))
-            Text("M: \(cmyk.magenta)").font(.system(.body, design: .monospaced))
-            Text("K: \(cmyk.black)").font(.system(.body, design: .monospaced))
+            Text("C: \(cmyk.cyan)")
+            Text("Y: \(cmyk.yellow)")
+            Text("M: \(cmyk.magenta)")
+            Text("K: \(cmyk.black)")
         }
     }
 
@@ -87,6 +91,25 @@ struct ColorDetail: View {
                 .font(.system(.body, design: .monospaced))
             Text("B: \(String(format: "%.1f", hsba.brightness))")
                 .font(.system(.body, design: .monospaced))
+        }
+    }
+
+    var additionalDetails: some View {
+        var helper = ColorDetailHelper(color: color)
+        return VStack(alignment: .leading) {
+            Section(header: Text("RGB Details").fontWeight(.bold)) {
+                ColorDetailRow(text: "Pure Hue",
+                               subtext: helper.pureHue.rawValue,
+                               image: Image(uiImage: UIImage(color: helper.pureHue.color)!))
+                ColorDetailRow(text: "Hue Type",
+                               subtext: helper.pureHue.category.rawValue,
+                               image: Image(systemName: helper.pureHue.category == .additive ? "plus" : "minus"))
+                ColorDetailRow(text: "Tertiary Hue",
+                               subtext: helper.tertiaryHue.rawValue,
+                               animation: ColorCombinationAnimation(
+                                color1: helper.tertiaryHue.pureHues[0].color,
+                                color2: helper.tertiaryHue.pureHues[1].color))
+            }
         }
     }
 

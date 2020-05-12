@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9305635C246B51F600193D04 /* ColorDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635B246B51F600193D04 /* ColorDetailRow.swift */; };
+		9305635E246B599500193D04 /* ColorCombinationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635D246B599500193D04 /* ColorCombinationAnimation.swift */; };
 		9308072B2469CECD00951AD7 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072A2469CECD00951AD7 /* ActivityView.swift */; };
 		9308072D2469D63F00951AD7 /* UIImage+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */; };
-		9308072F2469D77F00951AD7 /* ColorActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072E2469D77F00951AD7 /* ColorActivity.swift */; };
+		9308072F2469D77F00951AD7 /* ColorActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */; };
 		9309C57D246232F800895160 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309C57C246232F800895160 /* AppDelegate.swift */; };
 		9309C57F246232F800895160 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309C57E246232F800895160 /* SceneDelegate.swift */; };
 		9309C581246232F800895160 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309C580246232F800895160 /* ContentView.swift */; };
@@ -25,15 +27,18 @@
 		939513AA2467E54400AD0E2A /* PolarToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A92467E54400AD0E2A /* PolarToColor.swift */; };
 		939513AC2467E56F00AD0E2A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513AB2467E56F00AD0E2A /* Location.swift */; };
 		939513AE2467E58900AD0E2A /* RelativeLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513AD2467E58900AD0E2A /* RelativeLocation.swift */; };
+		93A84599246B3A1700891ACC /* ColorDetailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A84598246B3A1700891ACC /* ColorDetailHelper.swift */; };
 		93AC12FD246279C200B05B6C /* CGFloat+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */; };
 		93ED98BF246517DC006AA339 /* UIColor+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED98BE246517DC006AA339 /* UIColor+Components.swift */; };
 		93ED98C32465DB44006AA339 /* ColorSwab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED98C22465DB44006AA339 /* ColorSwab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9305635B246B51F600193D04 /* ColorDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailRow.swift; sourceTree = "<group>"; };
+		9305635D246B599500193D04 /* ColorCombinationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCombinationAnimation.swift; sourceTree = "<group>"; };
 		9308072A2469CECD00951AD7 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+UIColor.swift"; sourceTree = "<group>"; };
-		9308072E2469D77F00951AD7 /* ColorActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorActivity.swift; sourceTree = "<group>"; };
+		9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorActivityItemSource.swift; sourceTree = "<group>"; };
 		9309C579246232F800895160 /* ColorWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9309C57C246232F800895160 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9309C57E246232F800895160 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		939513A92467E54400AD0E2A /* PolarToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarToColor.swift; sourceTree = "<group>"; };
 		939513AB2467E56F00AD0E2A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		939513AD2467E58900AD0E2A /* RelativeLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeLocation.swift; sourceTree = "<group>"; };
+		93A84598246B3A1700891ACC /* ColorDetailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailHelper.swift; sourceTree = "<group>"; };
 		93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Radians.swift"; sourceTree = "<group>"; };
 		93ED98BE246517DC006AA339 /* UIColor+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Components.swift"; sourceTree = "<group>"; };
 		93ED98C22465DB44006AA339 /* ColorSwab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwab.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				939513AB2467E56F00AD0E2A /* Location.swift */,
 				939513AD2467E58900AD0E2A /* RelativeLocation.swift */,
 				939513A72467E51100AD0E2A /* ColorCombinations.swift */,
+				93A84598246B3A1700891ACC /* ColorDetailHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,7 +129,7 @@
 				93ED98BE246517DC006AA339 /* UIColor+Components.swift */,
 				93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */,
 				9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */,
-				9308072E2469D77F00951AD7 /* ColorActivity.swift */,
+				9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -134,9 +141,11 @@
 				931C64782464885800F598F3 /* SecondaryPointer.swift */,
 				9309C580246232F800895160 /* ContentView.swift */,
 				939513A524679D3C00AD0E2A /* ColorDetail.swift */,
+				9305635B246B51F600193D04 /* ColorDetailRow.swift */,
 				931C647A2464989900F598F3 /* ColorSwabs.swift */,
 				93ED98C22465DB44006AA339 /* ColorSwab.swift */,
 				9308072A2469CECD00951AD7 /* ActivityView.swift */,
+				9305635D246B599500193D04 /* ColorCombinationAnimation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,16 +233,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9309C57D246232F800895160 /* AppDelegate.swift in Sources */,
+				9305635C246B51F600193D04 /* ColorDetailRow.swift in Sources */,
 				939513A624679D3C00AD0E2A /* ColorDetail.swift in Sources */,
 				931C647B2464989900F598F3 /* ColorSwabs.swift in Sources */,
 				939513A82467E51100AD0E2A /* ColorCombinations.swift in Sources */,
 				9309C57F246232F800895160 /* SceneDelegate.swift in Sources */,
+				9305635E246B599500193D04 /* ColorCombinationAnimation.swift in Sources */,
 				9308072B2469CECD00951AD7 /* ActivityView.swift in Sources */,
-				9308072F2469D77F00951AD7 /* ColorActivity.swift in Sources */,
+				9308072F2469D77F00951AD7 /* ColorActivityItemSource.swift in Sources */,
 				931C647D24649A5800F598F3 /* Pointers.swift in Sources */,
 				939513AC2467E56F00AD0E2A /* Location.swift in Sources */,
 				93ED98BF246517DC006AA339 /* UIColor+Components.swift in Sources */,
 				939513AA2467E54400AD0E2A /* PolarToColor.swift in Sources */,
+				93A84599246B3A1700891ACC /* ColorDetailHelper.swift in Sources */,
 				9309C581246232F800895160 /* ContentView.swift in Sources */,
 				9309C591246236C800895160 /* ColorWheel.swift in Sources */,
 				939513AE2467E58900AD0E2A /* RelativeLocation.swift in Sources */,

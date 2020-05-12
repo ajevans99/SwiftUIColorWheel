@@ -18,11 +18,9 @@ struct ContentView: View {
                 Text("Color Wheel")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(.top, 64)
+                    .padding(.top, 16)
                 ColorWheel()
                     .aspectRatio(contentMode: .fit)
-                    .padding(8)
-                Spacer()
                 Picker(selection: $pointers.colorCombination,
                        label: Text("Combination")) {
                         ForEach(ColorCombinations.allCases, id: \.self) { combo in
@@ -30,6 +28,8 @@ struct ContentView: View {
                         }
                 }
                 .labelsHidden()
+                .frame(maxHeight: 150)
+                .clipped()
                 ColorSwabs()
             }
             if pointers.selectedColor != nil {
