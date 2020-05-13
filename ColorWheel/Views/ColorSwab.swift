@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ColorSwab: View {
-    @EnvironmentObject var pointers: Pointers
+    @EnvironmentObject var favorites: Favorites
 
     let color: UIColor
 
@@ -30,6 +30,29 @@ struct ColorSwab: View {
                 }
             )
             .shadow(radius: 8)
+            .contextMenu {
+                if favorites.contains(color: self.color) {
+                    Button(action: {
+                        self.favorites.remove(color: self.color)
+                    }, label: {
+                        HStack {
+                            Text("Remove from Favorites")
+                            Spacer()
+                            Image(systemName: "star")
+                        }
+                    })
+                } else {
+                    Button(action: {
+                        self.favorites.add(color: self.color)
+                    }, label: {
+                        HStack {
+                            Text("Add to Favorites")
+                            Spacer()
+                            Image(systemName: "star.fill")
+                        }
+                    })
+                }
+            }
     }
 
     var colorText: some View {

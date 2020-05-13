@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ColorSwabs: View {
     @EnvironmentObject var pointers: Pointers
+    @EnvironmentObject var favorites: Favorites
+
     @State var lastColorsCount = 1
     @State var showDetail = false
 
@@ -39,7 +41,9 @@ struct ColorSwabs: View {
         .sheet(isPresented: $showDetail, onDismiss: {
             self.pointers.selectedColor = nil
         }, content: {
-            ColorDetail(color: self.pointers.selectedColor ?? .white, isPresenting: self.$showDetail)
+            ColorDetailSheet(color: self.pointers.selectedColor ?? .white,
+                             isPresenting: self.$showDetail)
+                .environmentObject(self.favorites)
         })
     }
 }

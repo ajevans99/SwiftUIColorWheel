@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9305635C246B51F600193D04 /* ColorDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635B246B51F600193D04 /* ColorDetailRow.swift */; };
-		9305635E246B599500193D04 /* ColorCombinationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635D246B599500193D04 /* ColorCombinationAnimation.swift */; };
+		9305635E246B599500193D04 /* CombineColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635D246B599500193D04 /* CombineColors.swift */; };
+		93056360246B7D9300193D04 /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9305635F246B7D9300193D04 /* FavoritesList.swift */; };
+		93056362246B88E900193D04 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93056361246B88E900193D04 /* FavoritesService.swift */; };
+		93056364246B88F500193D04 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93056363246B88F500193D04 /* Favorites.swift */; };
 		9308072B2469CECD00951AD7 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072A2469CECD00951AD7 /* ActivityView.swift */; };
 		9308072D2469D63F00951AD7 /* UIImage+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */; };
 		9308072F2469D77F00951AD7 /* ColorActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */; };
@@ -22,6 +25,8 @@
 		931C64792464885800F598F3 /* SecondaryPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C64782464885800F598F3 /* SecondaryPointer.swift */; };
 		931C647B2464989900F598F3 /* ColorSwabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C647A2464989900F598F3 /* ColorSwabs.swift */; };
 		931C647D24649A5800F598F3 /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C647C24649A5800F598F3 /* Pointers.swift */; };
+		937276EC246C7EB100E7B617 /* ColorDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */; };
+		937276EE246C808800E7B617 /* FavoritesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937276ED246C808800E7B617 /* FavoritesRow.swift */; };
 		939513A624679D3C00AD0E2A /* ColorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A524679D3C00AD0E2A /* ColorDetail.swift */; };
 		939513A82467E51100AD0E2A /* ColorCombinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A72467E51100AD0E2A /* ColorCombinations.swift */; };
 		939513AA2467E54400AD0E2A /* PolarToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A92467E54400AD0E2A /* PolarToColor.swift */; };
@@ -35,7 +40,10 @@
 
 /* Begin PBXFileReference section */
 		9305635B246B51F600193D04 /* ColorDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailRow.swift; sourceTree = "<group>"; };
-		9305635D246B599500193D04 /* ColorCombinationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCombinationAnimation.swift; sourceTree = "<group>"; };
+		9305635D246B599500193D04 /* CombineColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineColors.swift; sourceTree = "<group>"; };
+		9305635F246B7D9300193D04 /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
+		93056361246B88E900193D04 /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
+		93056363246B88F500193D04 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		9308072A2469CECD00951AD7 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+UIColor.swift"; sourceTree = "<group>"; };
 		9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorActivityItemSource.swift; sourceTree = "<group>"; };
@@ -51,6 +59,8 @@
 		931C64782464885800F598F3 /* SecondaryPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryPointer.swift; sourceTree = "<group>"; };
 		931C647A2464989900F598F3 /* ColorSwabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwabs.swift; sourceTree = "<group>"; };
 		931C647C24649A5800F598F3 /* Pointers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointers.swift; sourceTree = "<group>"; };
+		937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailSheet.swift; sourceTree = "<group>"; };
+		937276ED246C808800E7B617 /* FavoritesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRow.swift; sourceTree = "<group>"; };
 		939513A524679D3C00AD0E2A /* ColorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetail.swift; sourceTree = "<group>"; };
 		939513A72467E51100AD0E2A /* ColorCombinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCombinations.swift; sourceTree = "<group>"; };
 		939513A92467E54400AD0E2A /* PolarToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarToColor.swift; sourceTree = "<group>"; };
@@ -118,6 +128,7 @@
 				939513AD2467E58900AD0E2A /* RelativeLocation.swift */,
 				939513A72467E51100AD0E2A /* ColorCombinations.swift */,
 				93A84598246B3A1700891ACC /* ColorDetailHelper.swift */,
+				93056363246B88F500193D04 /* Favorites.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +141,7 @@
 				93AC12FC246279C200B05B6C /* CGFloat+Radians.swift */,
 				9308072C2469D63F00951AD7 /* UIImage+UIColor.swift */,
 				9308072E2469D77F00951AD7 /* ColorActivityItemSource.swift */,
+				93056361246B88E900193D04 /* FavoritesService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -140,12 +152,15 @@
 				9309C590246236C800895160 /* ColorWheel.swift */,
 				931C64782464885800F598F3 /* SecondaryPointer.swift */,
 				9309C580246232F800895160 /* ContentView.swift */,
+				937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */,
 				939513A524679D3C00AD0E2A /* ColorDetail.swift */,
 				9305635B246B51F600193D04 /* ColorDetailRow.swift */,
 				931C647A2464989900F598F3 /* ColorSwabs.swift */,
 				93ED98C22465DB44006AA339 /* ColorSwab.swift */,
 				9308072A2469CECD00951AD7 /* ActivityView.swift */,
-				9305635D246B599500193D04 /* ColorCombinationAnimation.swift */,
+				9305635F246B7D9300193D04 /* FavoritesList.swift */,
+				937276ED246C808800E7B617 /* FavoritesRow.swift */,
+				9305635D246B599500193D04 /* CombineColors.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,11 +253,13 @@
 				931C647B2464989900F598F3 /* ColorSwabs.swift in Sources */,
 				939513A82467E51100AD0E2A /* ColorCombinations.swift in Sources */,
 				9309C57F246232F800895160 /* SceneDelegate.swift in Sources */,
-				9305635E246B599500193D04 /* ColorCombinationAnimation.swift in Sources */,
+				937276EE246C808800E7B617 /* FavoritesRow.swift in Sources */,
+				9305635E246B599500193D04 /* CombineColors.swift in Sources */,
 				9308072B2469CECD00951AD7 /* ActivityView.swift in Sources */,
 				9308072F2469D77F00951AD7 /* ColorActivityItemSource.swift in Sources */,
 				931C647D24649A5800F598F3 /* Pointers.swift in Sources */,
 				939513AC2467E56F00AD0E2A /* Location.swift in Sources */,
+				93056362246B88E900193D04 /* FavoritesService.swift in Sources */,
 				93ED98BF246517DC006AA339 /* UIColor+Components.swift in Sources */,
 				939513AA2467E54400AD0E2A /* PolarToColor.swift in Sources */,
 				93A84599246B3A1700891ACC /* ColorDetailHelper.swift in Sources */,
@@ -252,7 +269,10 @@
 				93AC12FD246279C200B05B6C /* CGFloat+Radians.swift in Sources */,
 				9308072D2469D63F00951AD7 /* UIImage+UIColor.swift in Sources */,
 				93ED98C32465DB44006AA339 /* ColorSwab.swift in Sources */,
+				93056364246B88F500193D04 /* Favorites.swift in Sources */,
+				937276EC246C7EB100E7B617 /* ColorDetailSheet.swift in Sources */,
 				931C64792464885800F598F3 /* SecondaryPointer.swift in Sources */,
+				93056360246B7D9300193D04 /* FavoritesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

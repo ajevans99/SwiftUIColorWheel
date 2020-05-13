@@ -10,16 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var pointers: Pointers
+    @State var fakeState = true
 
     var body: some View {
-        ZStack {
-            Color.white
+        NavigationView {
             VStack(alignment: .center) {
-                Text("Color Wheel")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 16)
                 ColorWheel()
+                    .scaleEffect(0.9)
                     .aspectRatio(contentMode: .fit)
                 Picker(selection: $pointers.colorCombination,
                        label: Text("Combination")) {
@@ -32,7 +29,13 @@ struct ContentView: View {
                 .clipped()
                 ColorSwabs()
             }
-        }.edgesIgnoringSafeArea(.all)
+            .navigationBarTitle(Text("Color Wheel"), displayMode: .large)
+            .navigationBarItems(trailing: NavigationLink(
+                destination: FavoritesList()) {
+                    Text("Favorites")
+                }
+            )
+        }
     }
 }
 

@@ -11,31 +11,17 @@ import SwiftUI
 struct ColorDetail: View {
     let color: UIColor
 
-    @Binding var isPresenting: Bool
-    @State var showShareSheet = false
-
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .center, spacing: 16) {
-                    ColorSwab(color: color)
-                        .scaleEffect(1.5)
-                        .padding(.all, 16)
-                    additionalDetails
-                }
-                .font(.system(.body, design: .monospaced))
-                .padding(.all, 32)
-                .navigationBarTitle("Details", displayMode: .inline)
-                .navigationBarItems(leading: Button(action: self.share) {
-                    Image(systemName: "square.and.arrow.up")
-                }, trailing: Button(action: self.dismiss) {
-                    Text("Done")
-                })
+        ScrollView {
+            VStack(alignment: .center, spacing: 16) {
+                ColorSwab(color: color)
+                    .scaleEffect(1.5)
+                    .padding(.all, 16)
+                additionalDetails
             }
-        }
-        .sheet(isPresented: $showShareSheet) {
-            ActivityView(activityItems: [ColorActivityItemSource(color: self.color), UIImage(color: self.color) as Any],
-                         applicationActivities: nil)
+            .font(.system(.body, design: .monospaced))
+            .padding(.all, 32)
+
         }
     }
 
@@ -107,17 +93,9 @@ struct ColorDetail: View {
                            image: Image(systemName: helper.pureHue.category == .additive ? "plus" : "minus"))
             ColorDetailRow(text: "Tertiary Hue",
                            subtext: helper.tertiaryHue.rawValue,
-                           animation: ColorCombinationAnimation(
+                           colors: CombineColors(
                             color1: helper.tertiaryHue.pureHues[0].color,
                             color2: helper.tertiaryHue.pureHues[1].color))
         }
-    }
-
-    func dismiss() {
-        isPresenting = false
-    }
-
-    func share() {
-        showShareSheet = true
     }
 }

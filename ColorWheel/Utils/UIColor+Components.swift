@@ -9,7 +9,7 @@
 import SwiftUI
 
 extension UIColor {
-    private var rgbaPrime: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    var rgbaPrime: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
