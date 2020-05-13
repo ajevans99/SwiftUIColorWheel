@@ -27,6 +27,7 @@
 		931C647D24649A5800F598F3 /* Pointers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C647C24649A5800F598F3 /* Pointers.swift */; };
 		937276EC246C7EB100E7B617 /* ColorDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */; };
 		937276EE246C808800E7B617 /* FavoritesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937276ED246C808800E7B617 /* FavoritesRow.swift */; };
+		937276F0246C8DEE00E7B617 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937276EF246C8DEE00E7B617 /* Search.swift */; };
 		939513A624679D3C00AD0E2A /* ColorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A524679D3C00AD0E2A /* ColorDetail.swift */; };
 		939513A82467E51100AD0E2A /* ColorCombinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A72467E51100AD0E2A /* ColorCombinations.swift */; };
 		939513AA2467E54400AD0E2A /* PolarToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939513A92467E54400AD0E2A /* PolarToColor.swift */; };
@@ -61,6 +62,7 @@
 		931C647C24649A5800F598F3 /* Pointers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointers.swift; sourceTree = "<group>"; };
 		937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailSheet.swift; sourceTree = "<group>"; };
 		937276ED246C808800E7B617 /* FavoritesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRow.swift; sourceTree = "<group>"; };
+		937276EF246C8DEE00E7B617 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		939513A524679D3C00AD0E2A /* ColorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetail.swift; sourceTree = "<group>"; };
 		939513A72467E51100AD0E2A /* ColorCombinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCombinations.swift; sourceTree = "<group>"; };
 		939513A92467E54400AD0E2A /* PolarToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarToColor.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				9309C580246232F800895160 /* ContentView.swift */,
 				937276EB246C7EB100E7B617 /* ColorDetailSheet.swift */,
 				939513A524679D3C00AD0E2A /* ColorDetail.swift */,
+				937276EF246C8DEE00E7B617 /* Search.swift */,
 				9305635B246B51F600193D04 /* ColorDetailRow.swift */,
 				931C647A2464989900F598F3 /* ColorSwabs.swift */,
 				93ED98C22465DB44006AA339 /* ColorSwab.swift */,
@@ -266,6 +269,7 @@
 				9309C581246232F800895160 /* ContentView.swift in Sources */,
 				9309C591246236C800895160 /* ColorWheel.swift in Sources */,
 				939513AE2467E58900AD0E2A /* RelativeLocation.swift in Sources */,
+				937276F0246C8DEE00E7B617 /* Search.swift in Sources */,
 				93AC12FD246279C200B05B6C /* CGFloat+Radians.swift in Sources */,
 				9308072D2469D63F00951AD7 /* UIImage+UIColor.swift in Sources */,
 				93ED98C32465DB44006AA339 /* ColorSwab.swift in Sources */,

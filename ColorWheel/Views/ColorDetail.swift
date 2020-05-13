@@ -17,20 +17,15 @@ struct ColorDetail: View {
                 ColorSwab(color: color)
                     .scaleEffect(1.5)
                     .padding(.all, 16)
-                additionalDetails
+                VStack(alignment: .leading) {
+                    classificationSection
+                    rgbSection
+                    cmykSection
+                    hsbSection
+                }
             }
             .font(.system(.body, design: .monospaced))
             .padding(.all, 32)
-
-        }
-    }
-
-    var additionalDetails: some View {
-        return VStack(alignment: .leading) {
-            classificationSection
-            rgbSection
-            cymkSection
-            hsbSection
         }
     }
 
@@ -49,21 +44,21 @@ struct ColorDetail: View {
         }
     }
 
-    var cymkSection: some View {
-        let cymk = color.cymk
-        return Section(header: Text("CYMK Color System").fontWeight(.bold).font(.headline)) {
+    var cmykSection: some View {
+        let cmyk = color.cmyk
+        return Section(header: Text("CMYK Color System").fontWeight(.bold).font(.headline)) {
             ColorDetailRow(text: "Cyan",
-                           subtext: "\(cymk.cyan)/100",
-                           image: Image(uiImage: UIImage(color: .cyan)!))
-            ColorDetailRow(text: "Yellow",
-                           subtext: "\(cymk.yellow)/100",
-                           image: Image(uiImage: UIImage(color: .yellow)!))
+                           subtext: "\(cmyk.cyan)/100",
+                           color: Color(UIColor.cyan))
             ColorDetailRow(text: "Magenta",
-                           subtext: "\(cymk.magenta)/100",
-                           image: Image(uiImage: UIImage(color: .magenta)!))
+                           subtext: "\(cmyk.magenta)/100",
+                           color: Color(UIColor.magenta))
+            ColorDetailRow(text: "Yellow",
+                           subtext: "\(cmyk.yellow)/100",
+                           color: Color(UIColor.yellow))
             ColorDetailRow(text: "Black",
-                           subtext: "\(cymk.black)/100",
-                           image: Image(uiImage: UIImage(color: .black)!))
+                           subtext: "\(cmyk.black)/100",
+                           color: Color.black)
         }
     }
 

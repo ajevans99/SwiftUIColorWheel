@@ -10,31 +10,52 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var pointers: Pointers
-    @State var fakeState = true
+    @State var isShowingSearch = false
 
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
-                ColorWheel()
-                    .scaleEffect(0.9)
-                    .aspectRatio(contentMode: .fit)
-                Picker(selection: $pointers.colorCombination,
-                       label: Text("Combination")) {
-                        ForEach(ColorCombinations.allCases, id: \.self) { combo in
-                            Text(combo.rawValue)
-                        }
+        ZStack {
+            NavigationView {
+                VStack(alignment: .center) {
+                    ColorWheel()
+                        .scaleEffect(0.9)
+                        .aspectRatio(contentMode: .fit)
+                    Picker(selection: $pointers.colorCombination,
+                           label: Text("Combination")) {
+                            ForEach(ColorCombinations.allCases, id: \.self) { combo in
+                                Text(combo.rawValue)
+                            }
+                    }
+                    .labelsHidden()
+                    .frame(maxHeight: 150)
+                    .clipped()
+                    ColorSwabs()
                 }
-                .labelsHidden()
-                .frame(maxHeight: 150)
-                .clipped()
-                ColorSwabs()
+                .navigationBarTitle(Text("Color Wheel"), displayMode: .large)
+                .navigationBarItems(leading: self.leading, trailing: self.trailing)
             }
-            .navigationBarTitle(Text("Color Wheel"), displayMode: .large)
-            .navigationBarItems(trailing: NavigationLink(
-                destination: FavoritesList()) {
-                    Text("Favorites")
-                }
-            )
+            if isShowingSearch {
+                Search(isPresenting: $isShowingSearch)
+            }
+        }
+    }
+
+    func showSearch() {
+        isShowingSearch = true
+    }
+}
+
+// MARK: - Navigation Buttons
+
+extension ContentView {
+    var leading: some View {
+        NavigationLink(destination: FavoritesList()) {
+            Text("Favorites")
+        }
+    }
+
+    var trailing: some View {
+        Button(action: showSearch) {
+                Image(systemName: "magnifyingglass")
         }
     }
 }

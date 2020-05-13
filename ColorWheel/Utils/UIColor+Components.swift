@@ -27,7 +27,7 @@ extension UIColor {
                 prime.alpha)
     }
 
-    var cymk: (cyan: Int, yellow: Int, magenta: Int, black: Int) {
+    var cmyk: (cyan: Int, yellow: Int, magenta: Int, black: Int) {
         let prime = rgbaPrime
         let black = 1 - max(prime.red, prime.green, prime.blue)
         let cyan = (1 - prime.red - black) / (1 - black)
@@ -51,5 +51,22 @@ extension UIColor {
         let green = String(format: "%02X", components.green)
         let blue = String(format: "%02X", components.blue)
         return "\(red)\(green)\(blue)"
+    }
+}
+
+extension UIColor {
+    convenience init(hex: String) {
+        var rgbValue: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&rgbValue)
+        let components = (
+            red: CGFloat((rgbValue >> 16) & 0xff) / 255.0,
+            green: CGFloat((rgbValue >> 8) & 0xff) / 255.0,
+            blue: CGFloat((rgbValue >> 0) & 0xff) / 255.0
+        )
+
+        self.init(red: components.red,
+                  green: components.green,
+                  blue: components.blue,
+                  alpha: 1.0)
     }
 }
