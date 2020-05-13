@@ -13,11 +13,18 @@ struct ColorDetailRow: View {
     let subtext: String
     var image: Image?
     var animation: ColorCombinationAnimation?
+    var color: Color?
 
     var body: some View {
         HStack {
             if image != nil {
                 image!
+                    .frame(width: 40, height: 40)
+                    .overlay(RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.primary, lineWidth: 3))
+                    .cornerRadius(8)
+            } else if color != nil {
+                color!
                     .frame(width: 40, height: 40)
                     .overlay(RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.primary, lineWidth: 3))
