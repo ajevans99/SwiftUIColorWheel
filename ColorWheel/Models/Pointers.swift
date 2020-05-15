@@ -28,13 +28,6 @@ class Pointers: ObservableObject {
                                    circleRadius: circleRadius,
                                    brightnessAngle: primaryPointer.brightnessAngle)]
 
-        if colors.first?.hex ?? "" == "000000" {
-            colors.append(polarToColor(radius: primaryPointer.radius,
-                                       angle: primaryPointer.angle,
-                                       circleRadius: circleRadius,
-                                       brightnessAngle: nil))
-        }
-
         colors += secondaryPointers.map { location in
             polarToColor(radius: primaryPointer.radius,
                          angle: location.angle,

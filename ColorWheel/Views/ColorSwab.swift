@@ -13,8 +13,12 @@ struct ColorSwab: View {
 
     let color: UIColor
 
+    let brightness: Double
+
     init(color: UIColor) {
         self.color = color
+
+        brightness = color.hsba.brightness
     }
 
     var body: some View {
@@ -28,6 +32,10 @@ struct ColorSwab: View {
                     Spacer()
                     colorText
                 }
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(brightness < 50 ? Color.white : Color.black, lineWidth: 2)
             )
             .shadow(radius: 8)
             .contextMenu {
@@ -56,8 +64,7 @@ struct ColorSwab: View {
     }
 
     var colorText: some View {
-        let brightness = color.hsba.brightness
-        return Text("#\(color.hex)")
+        Text("#\(color.hex)")
             .font(.system(.caption, design: .monospaced))
             .foregroundColor(brightness < 50 ? .white : .black)
             .padding(.bottom, 4)
